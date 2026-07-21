@@ -1,0 +1,56 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "A user of the application",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "email": { "type": "string" },
+        "displayName": { "type": "string" },
+        "photoURL": { "type": "string" },
+        "createdAt": { "type": "number" },
+        "updatedAt": { "type": "number" }
+      },
+      "required": ["uid", "email", "createdAt", "updatedAt"]
+    },
+    "ChatSession": {
+      "title": "ChatSession",
+      "description": "A chat session between a user and the AI assistant",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "startedAt": { "type": "number" },
+        "updatedAt": { "type": "number" },
+        "title": { "type": "string", "maxLength": 100 }
+      },
+      "required": ["userId", "startedAt", "updatedAt", "title"]
+    },
+    "Message": {
+      "title": "Message",
+      "description": "A single message within a chat session",
+      "type": "object",
+      "properties": {
+        "sessionId": { "type": "string" },
+        "role": { "type": "string", "enum": ["user", "model", "assistant"] },
+        "content": { "type": "string", "maxLength": 10000 },
+        "createdAt": { "type": "number" }
+      },
+      "required": ["sessionId", "role", "content", "createdAt"]
+    }
+  },
+  "firestore": {
+    "users/{userId}": {
+      "schema": { "$ref": "#/entities/User" },
+      "description": "User profiles"
+    },
+    "chatSessions/{sessionId}": {
+      "schema": { "$ref": "#/entities/ChatSession" },
+      "description": "Chat sessions belonging to users"
+    },
+    "chatSessions/{sessionId}/messages/{messageId}": {
+      "schema": { "$ref": "#/entities/Message" },
+      "description": "Messages belonging to a chat session"
+    }
+  }
+}

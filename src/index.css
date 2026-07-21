@@ -1,0 +1,57 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", sans-serif;
+  --font-serif: "Cormorant Garamond", serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  --color-background: var(--theme-background);
+  --color-foreground: var(--theme-foreground);
+  --color-muted: var(--theme-muted);
+  --color-accent: var(--theme-accent);
+  --color-accent-hover: var(--theme-accent-hover);
+  --color-border: var(--theme-border);
+  --color-card: var(--theme-card);
+}
+
+@layer base {
+  :root {
+    --theme-background: #F8F6F3;
+    --theme-foreground: #18181B;
+    --theme-muted: #71717A;
+    --theme-accent: #2563EB;
+    --theme-accent-hover: #1D4ED8;
+    --theme-border: #E7E5E4;
+    --theme-card: #FFFFFF;
+  }
+
+  .dark {
+    --theme-background: #09090B;
+    --theme-foreground: #FAFAFA;
+    --theme-muted: #A1A1AA;
+    --theme-accent: #3B82F6;
+    --theme-accent-hover: #60A5FA;
+    --theme-border: #27272A;
+    --theme-card: #18181B;
+  }
+}
+
+@layer utilities {
+  [data-magnetic="true"] {
+    transition: transform 0.3s cubic-bezier(0.2, 0, 0.2, 1);
+  }
+  
+  [data-magnetic="true"]:hover {
+    transition: transform 0.1s linear;
+  }
+}
+
+@layer base {
+  body {
+    @apply bg-background text-foreground font-sans antialiased overflow-x-hidden transition-colors duration-500;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif;
+  }
+}
