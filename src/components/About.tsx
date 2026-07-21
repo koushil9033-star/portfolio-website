@@ -48,9 +48,9 @@ export default function About() {
               <div className="absolute inset-0 bg-border transform rotate-3 rounded-2xl"></div>
               <div className="absolute inset-0 bg-background border border-border shadow-sm rounded-2xl overflow-hidden group">
                 <img 
-                  src="https://images.unsplash.com/photo-1549692520-acc6669e2f0c?auto=format&fit=crop&q=80&w=800" 
+                  src="/profile.jpg" 
                   alt="Profile" 
-                  className="w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700"
+                  className="w-full h-full object-cover transition-all duration-700"
                 />
                 <div className="absolute inset-0 border border-black/10 rounded-2xl"></div>
               </div>
